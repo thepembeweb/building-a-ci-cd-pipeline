@@ -1,12 +1,21 @@
+﻿# Azure Infrastructure Operations Project: Building a CI/CD Pipeline
+
+> This project demonstrates how to build a Github repository from scratch and create a scaffolding to assist in performing both Continuous Integration and Continuous Delivery. The project uses Github Actions along with a Makefile, requirements.txt and application code to perform an initial lint, test, and install cycle. Lastly the project will integrate Azure Pipelines to enable Continuous Delivery to Azure App Service.
+
+![](logo-azure.png)
+![](Kaggle_logo.png)
+
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+![Python application test with Github Actions](https://github.com/thepembeweb/building-a-ci-cd-pipeline/workflows/Python%20application%20test%20with%20Github%20Actions/badge.svg)
+
 # Overview
 
-<TODO: complete this with an overview of your project>
+This project demonstrates how to build a Github repository from scratch and create a scaffolding to assist in performing both Continuous Integration and Continuous Delivery. The project uses Github Actions along with a Makefile, requirements.txt and application code to perform an initial lint, test, and install cycle. Lastly the project will integrate Azure Pipelines to enable Continuous Delivery to Azure App Service.
 
 ## Project Plan
-<TODO: Project Plan
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* [Trello board](https://trello.com/b/LirRms2w) 
+* [Project plan](https://docs.google.com/spreadsheets/d/1nh8Js1f2Pm17IbPwdjDykV-pCO2gOOzg_EjWI1cFxTU/edit?usp=sharing)
 
 ## Instructions
 
@@ -47,5 +56,24 @@ Port: 443
 ## Demo 
 
 <TODO: Add link Screencast on YouTube>
+
+## Built With
+
+* [Azure](https://portal.azure.com/) - Cloud service provider used
+* [Python](https://www.python.org/) - The programming language used
+* [Boston Housing](https://www.kaggle.com/c/boston-housing) - Kaggle Data source
+
+## Authors
+
+* **[Pemberai Sweto](https://github.com/thepembeweb)** - *Initial work* - [Building a CI/CD Pipeline](https://github.com/thepembeweb/building-a-ci-cd-pipeline)
+
+## License
+
+[![License](http://img.shields.io/:license-mit-green.svg?style=flat-square)](http://badges.mit-license.org)
+
+- This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+- Copyright 2020 © [Pemberai Sweto](https://github.com/thepembeweb).
+
+
 
 
