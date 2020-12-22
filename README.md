@@ -39,13 +39,13 @@ This project demonstrates how to build a Github repository from scratch and crea
     - In Azure Cloud Shell Clone the source locally:
       ```sh
       $ git clone git@github.com:thepembeweb/building-a-ci-cd-pipeline.git
-      $ cd building-a-ci-cd-pipeline
       ```    
     ![alt Project cloned into Azure Cloud Shell](screenshots/1-project-cloned-into-azure-cloud-shell.png)
     
 2. Local Test
     - Setup a Virtual Environment
       ```sh
+      $ cd building-a-ci-cd-pipeline
       $ python3 -m venv ~/.building-a-ci-cd-pipeline
       $ source ~/.building-a-ci-cd-pipeline/bin/activate
       ```    
