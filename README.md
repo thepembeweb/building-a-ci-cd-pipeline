@@ -30,7 +30,7 @@ This project demonstrates how to build a Github repository from scratch and crea
 
 ### Instructions
 
-#### Step 1: Get necessary azure credentials needed for your deployment
+#### Step 1: Create the Cloud-Based Development Environment
 * Log onto to Azure Portal
 * Open Azure Cloud Shell
 * Create ssh-keys in Azure Cloud Shell
