@@ -69,7 +69,7 @@ This project demonstrates how to build a Github repository from scratch and crea
 3. Deploy the app to an Azure App Service
     - Create an App Service in Azure with the following command where you specify your app and resource group names
         ```
-        az webapp up -n your-app-name -g your-resource-group
+        az webapp up -n <your-appservice> -g <your-resource-group>
         ```
     ![alt Deploy app in Cloud Shell](screenshots/5-deploy-app-in-cloud-shell.png)
     - App Service running in Azure
@@ -108,112 +108,25 @@ This project demonstrates how to build a Github repository from scratch and crea
     ![alt Passing tests](screenshots/3-passing-github-actions-build.png)
 
     
-4. Continuous Delivery on Azure
-    - Log onto to Azure Portal
-    - Open Azure Cloud Shell
+4. Enable Continuous Deployment with Azure Pipelines
+    * Create a Azure DevOps Project and then establish a service connection for Azure Pipelines and Azure App Service as shown [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops&WT.mc_id=udacity_learn-wwl)
+      ![alt Successful deploy of the project in Azure Pipelines](screenshots/10-successful-deploy-of-the-project-in-azure-pipelines.png)
+    * Running Azure App Service from Azure Pipelines automatic deployment
+      ![alt Running Azure App Service from Azure Pipelines automatic deployment](screenshots/12-project-running-on-azure-app-service-auto-deployment.png)
+    * Verify the prediction  
+      ![alt Successful prediction from deployed flask app in Azure Cloud Shell](screenshots/6-make-prediction.png)
+    * View output of streamed log files from deployed application
+      ```
+        az webapp log tail
+      ```
+      ![alt Output of streamed log files from deployed application](screenshots/9-output-of-streamed-log-files-from-deployed-application.png)
     
-5. Get necessary azure credentials needed for your deployment
-    - Log onto to Azure Portal
-    - Open Azure Cloud Shell
-
-
-
-
-1. Get necessary azure credentials needed for your deployment
-    - On your terminal do `az login`, the results will give your subscription id which is the id field in the ouput.
-        ```
-        [
-            {
-                "cloudName": "AzureCloud",
-                "homeTenantId": "xxxxxxxxxxxxxxxxxxxx",
-                "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "isDefault": true,
-                "managedByTenants": [],
-                "name": "Free Trial",
-                "state": "Enabled",
-                "tenantId": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "user": {
-                "name": "xxxxxxx",
-                "type": "user"
-                }
-            }
-        ]
-
-        ```
-    - Create an azure service principal for terraform using the command below 
-        ` az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"`. You should get an output similar to:
-         ```
-        {
-            "client_id": "xxxxxxxxxxxxxxxxxxxx",
-            "client_secret": "xxxxxxxxxxxxxxxxxxx",
-            "tenant_id": "xxxxxxxxxxxxxxxxxxxxxxx"
-        }
-
-        ```
-
-    - Create a resource group using the command
-        ```
-        az group create -n myResourceGroup -l eastus
-
-        ```
- 2. Create and Deploy virtual machine Image to Azure using Packer.
-    Set the client_id, client_secret and tenant_id as environment variables or copy them into a file e.g packer-vars.json and run the following command to create and deploy your image to azure.
-    
-        packer build -var-file packer-vars.json server.json
-        
- 3. Customize terraform IaaS code and Deploy
-    In the terrafom.tfvars file, the vm_count variable can be modified to the number of virtual machines you want created. By default, 2 VMs are created.
-    Also, in this file, provide the client id, secret and other required information.
-    Run the following commands to deploy your infrastructure:
-    first you initialise your terraform state, then get the plan of the resources that are to be deployed and finally run the apply command to create those resources on azure
-       
-        $ terraform init
-        $ terraform plan 
-        $ terrafrom apply
-        
- 4. Destroy Infrastructure
-    When you are done using the infrastructure, destroy it using the command
-      
-        terrafrom destroy     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* Project running on Azure App Service
-![alt Project running on Azure App Service](screenshots/11-project-running-on-azure-app-service.png)
-
-* Project cloned into Azure Cloud Shell
-![alt Project cloned into Azure Cloud Shell](screenshots/1-project-cloned-into-azure-cloud-shell.png)
-
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-![alt Passing tests](screenshots/3-passing-github-actions-build.png)
-
-* Output of a test run
-![alt Output of a test run](screenshots/2-make-all-passing-tests.png)
-
-* Successful deploy of the project in Azure Pipelines.
-![alt Successful deploy of the project in Azure Pipelines](screenshots/10-successful-deploy-of-the-project-in-azure-pipelines.png)
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-![alt Running Azure App Service from Azure Pipelines automatic deployment](screenshots/12-project-running-on-azure-app-service-auto-deployment.png)
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  
-![alt Successful prediction from deployed flask app in Azure Cloud Shell](screenshots/6-make-prediction.png)
-
-* Output of streamed log files from deployed application
-![alt Output of streamed log files from deployed application](screenshots/9-output-of-streamed-log-files-from-deployed-application.png)
+5. Load testing with Locust
+    * In the Cloud Shell run the below to start the load test with locust
+      ```
+        locust
+      ```
+      ![alt Output of streamed log files from deployed application](screenshots/7-application-running-load-test-with-locust.png)
 
 > 
 
