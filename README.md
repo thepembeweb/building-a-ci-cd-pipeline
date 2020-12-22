@@ -29,41 +29,42 @@ This project demonstrates how to build a Github repository from scratch and crea
 4. Install in your GitHub account [Azure Pipelines](https://github.com/marketplace/azure-pipelines)
 
 ### Instructions
-1. Get necessary azure credentials needed for your deployment
-    - Log onto to Azure Portal
-    - Open Azure Cloud Shell
-    - Create ssh-keys in Azure Cloud Shell
-    - Upload ssh-keys to Github
-    - Create a GitHub Repo
-    - When the GitHub Repo has been created select the option 'Clone with SSH'
-    - In Azure Cloud Shell Clone the source locally:
-      ```sh
-      $ git clone git@github.com:thepembeweb/building-a-ci-cd-pipeline.git
-      ```    
-    ![alt Project cloned into Azure Cloud Shell](screenshots/1-project-cloned-into-azure-cloud-shell.png)
+
+#### Step 1: Get necessary azure credentials needed for your deployment
+* Log onto to Azure Portal
+* Open Azure Cloud Shell
+* Create ssh-keys in Azure Cloud Shell
+* Upload ssh-keys to Github
+* Create a GitHub Repo
+* When the GitHub Repo has been created select the option 'Clone with SSH'
+* In Azure Cloud Shell Clone the source locally:
+  ```sh
+  $ git clone git@github.com:thepembeweb/building-a-ci-cd-pipeline.git
+  ```    
+![alt Project cloned into Azure Cloud Shell](screenshots/1-project-cloned-into-azure-cloud-shell.png)
     
-2. Local Test
-    - Setup a Virtual Environment
-      ```sh
-      $ cd building-a-ci-cd-pipeline
-      $ python3 -m venv ~/.building-a-ci-cd-pipeline
-      $ source ~/.building-a-ci-cd-pipeline/bin/activate
-      ```    
-    - Run make all to install dependencies in the virtual environment and run tests
-      ```sh
-      $ make all
-      ```
-      ![alt Make all output](screenshots/2-make-all-passing-tests.png)
-      
-    - Start the application in the local environment:
-      ```
-      python app.py
-      ```
-    - Open a separate Cloud Shell and test that the app is working:
-      ```
-      ./make_prediction.sh
-      ```
-      ![alt Make all output](screenshots/13-local-test.png)
+#### Step 2: Local Test
+* Setup a Virtual Environment
+  ```sh
+  $ cd building-a-ci-cd-pipeline
+  $ python3 -m venv ~/.building-a-ci-cd-pipeline
+  $ source ~/.building-a-ci-cd-pipeline/bin/activate
+  ```    
+* Run make all to install dependencies in the virtual environment and run tests
+  ```sh
+  $ make all
+  ```
+  ![alt Make all output](screenshots/2-make-all-passing-tests.png)
+
+* Start the application in the local environment:
+  ```
+  python app.py
+  ```
+* Open a separate Cloud Shell and test that the app is working:
+  ```
+  ./make_prediction.sh
+  ```
+  ![alt Make all output](screenshots/13-local-test.png)
 
 
 3. Deploy the app to an Azure App Service
