@@ -2,8 +2,7 @@
 
 > This project demonstrates how to build a Github repository from scratch and create a scaffolding to assist in performing both Continuous Integration and Continuous Delivery. The project uses Github Actions along with a Makefile, requirements.txt and application code to perform an initial lint, test, and install cycle. Lastly the project will integrate Azure Pipelines to enable Continuous Delivery to Azure App Service.
 
-![](logo-azure.png)
-![](Kaggle_logo.png)
+![](azure-pipelines.png)
 
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![Python application test with Github Actions](https://github.com/thepembeweb/building-a-ci-cd-pipeline/workflows/Python%20application%20test%20with%20Github%20Actions/badge.svg)
