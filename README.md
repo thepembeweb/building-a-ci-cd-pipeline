@@ -41,7 +41,7 @@ This project demonstrates how to build a Github repository from scratch and crea
   ```sh
   $ git clone git@github.com:thepembeweb/building-a-ci-cd-pipeline.git
   ```    
-![alt Project cloned into Azure Cloud Shell](screenshots/1-project-cloned-into-azure-cloud-shell.png)
+  ![alt Project cloned into Azure Cloud Shell](screenshots/1-project-cloned-into-azure-cloud-shell.png)
     
 #### Step 2: Local Test
 * Setup a Virtual Environment
@@ -66,74 +66,83 @@ This project demonstrates how to build a Github repository from scratch and crea
   ```
   ![alt Make all output](screenshots/13-local-test.png)
 
+#### Step 3: Deploy the app to an Azure App Service
+* Create an App Service in Azure with the following command where you specify your app and resource group names
+    ```
+    az webapp up -n <your-appservice> -g <your-resource-group>
+    ```
+  ![alt Deploy app in Cloud Shell](screenshots/5-deploy-app-in-cloud-shell.png)
+* App Service running in Azure
+  ![alt Deploy app in Cloud Shell](screenshots/11-project-running-on-azure-app-service.png)
 
-3. Deploy the app to an Azure App Service
-    - Create an App Service in Azure with the following command where you specify your app and resource group names
-        ```
-        az webapp up -n <your-appservice> -g <your-resource-group>
-        ```
-    ![alt Deploy app in Cloud Shell](screenshots/5-deploy-app-in-cloud-shell.png)
-    - App Service running in Azure
-    ![alt Deploy app in Cloud Shell](screenshots/11-project-running-on-azure-app-service.png)
+#### Step 4: Configure GitHub Actions
+* Enable GitHub Actions in the GitHub UI as shown [here](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)
+* Replace yml code with scaffolding
+  ```bash
+  name: Python application test with Github Actions
 
-4. Configure GitHub Actions
-    - Enable GitHub Actions in the GitHub UI as shown [here](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)
-    - Replace yml code with scaffolding
-      ```bash
-      name: Python application test with Github Actions
+  on: [push]
 
-      on: [push]
+  jobs:
+    build:
 
-      jobs:
-        build:
+      runs-on: ubuntu-latest
 
-          runs-on: ubuntu-latest
-
-          steps:
-          - uses: actions/checkout@v2
-          - name: Set up Python 3.5
-            uses: actions/setup-python@v1
-            with:
-              python-version: 3.5
-          - name: Install dependencies
-            run: |
-              make install
-          - name: Lint with pylint
-            run: |
-              make lint
-          - name: Test with pytest
-            run: |
-              make test
-      ```
-    - Verify remote tests pass in GitHub Actions UI
-    ![alt Passing tests](screenshots/3-passing-github-actions-build.png)
+      steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.5
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.5
+      - name: Install dependencies
+        run: |
+          make install
+      - name: Lint with pylint
+        run: |
+          make lint
+      - name: Test with pytest
+        run: |
+          make test
+  ```
+* Verify remote tests pass in GitHub Actions UI
+  ![alt Passing tests](screenshots/3-passing-github-actions-build.png)
 
     
-4. Enable Continuous Deployment with Azure Pipelines
-    * Create a Azure DevOps Project and then establish a service connection for Azure Pipelines and Azure App Service as shown [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops&WT.mc_id=udacity_learn-wwl)
-      ![alt Successful deploy of the project in Azure Pipelines](screenshots/10-successful-deploy-of-the-project-in-azure-pipelines.png)
-    * Running Azure App Service from Azure Pipelines automatic deployment
-      ![alt Running Azure App Service from Azure Pipelines automatic deployment](screenshots/12-project-running-on-azure-app-service-auto-deployment.png)
-    * Verify the prediction  
-      ![alt Successful prediction from deployed flask app in Azure Cloud Shell](screenshots/6-make-prediction.png)
-    * View output of streamed log files from deployed application
-      ```
-        az webapp log tail
-      ```
-      ![alt Output of streamed log files from deployed application](screenshots/9-output-of-streamed-log-files-from-deployed-application.png)
+#### Step 5: Enable Continuous Deployment with Azure Pipelines
+* Create a Azure DevOps Project and then establish a service connection for Azure Pipelines and Azure App Service as shown [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops&WT.mc_id=udacity_learn-wwl)
+  ![alt Successful deploy of the project in Azure Pipelines](screenshots/10-successful-deploy-of-the-project-in-azure-pipelines.png)
+* Running Azure App Service from Azure Pipelines automatic deployment
+  ![alt Running Azure App Service from Azure Pipelines automatic deployment](screenshots/12-project-running-on-azure-app-service-auto-deployment.png)
+* Verify the prediction  
+  ![alt Successful prediction from deployed flask app in Azure Cloud Shell](screenshots/6-make-prediction.png)
+* View output of streamed log files from deployed application
+  ```
+    az webapp log tail
+  ```
+  ![alt Output of streamed log files from deployed application](screenshots/9-output-of-streamed-log-files-from-deployed-application.png)
     
-5. Load testing with Locust
-    * In the Cloud Shell run the below to start the load test with locust
-      ```
-        locust
-      ```
-      ![alt Output of streamed log files from deployed application](screenshots/7-application-running-load-test-with-locust.png)
+#### Step 6: Load testing with Locust
+* Install locust:
+  ```
+  pip install locust
+  ```
+* Ensure the app is running:
+  ```
+  python app.py
+  ```
+* Start locust:
+  ```
+  locust
+  ```
+* Open a browser and go to [http://localhost:8089](http://localhost:8089). Enter the total number of users to simulate, spawn rate, set the host to localhost:5000, and click Start Swarming: 
+  ![alt Output of streamed log files from deployed application](screenshots/7-application-running-load-test-with-locust.png)
 
-> 
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+* Add and deploy a frontend service
+* Run the apps on Kubernetes cluster
+* Build multiple environments for the apps - development, staging, production environments
 
 ## Demo 
 
