@@ -24,7 +24,7 @@ This project demonstrates how to build a Github repository from scratch and crea
 
 ### Dependencies
 1. Create an [Azure Account](https://portal.azure.com)
-2. Create an [Azure Pipelines Account](https://dev.azure.com/)
+2. Create an [Azure Devops Account](https://dev.azure.com/)
 3. Install the [Azure command line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 4. Install in your GitHub account [Azure Pipelines](https://github.com/marketplace/azure-pipelines)
 
