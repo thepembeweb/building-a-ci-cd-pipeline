@@ -151,6 +151,7 @@ This project demonstrates how to build a Github repository from scratch and crea
 ## Built With
 
 * [Azure](https://portal.azure.com/) - Cloud service provider used
+* [Azure DevOps](https://dev.azure.com/) - Cloud DevOps service used
 * [Python](https://www.python.org/) - The programming language used
 * [Boston Housing](https://www.kaggle.com/c/boston-housing) - Kaggle Data source
 
