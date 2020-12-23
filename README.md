@@ -146,7 +146,7 @@ This project demonstrates how to build a Github repository from scratch and crea
 
 ## Demo 
 
-[Screencast on YouTube](https://portal.azure.com/)
+[Screencast on YouTube](https://youtu.be/L6VgMeJBoJI)
 
 ## Built With
 
